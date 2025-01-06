@@ -1,0 +1,41 @@
+replicas:
+  _default: 1
+  dev: 1
+
+selector : dev
+
+name:
+  app: bot-state-helm
+
+service:
+  nameApp: bot-state-helm-service
+  portName: helm-bot-state
+  type: NodePort
+  port: 80
+  targetPort: 8003
+
+kafka:
+  bootstrap: kafka:9092
+
+image:
+  repository: bobah165/botstateservice
+  tag: v7
+
+ingress:
+  enabled: false
+  name: "bot-state-helm-ingress"
+  className: nginx
+  host: "arch.homework"
+  pathType: Prefix
+  path: /
+
+db:
+  url: jdbc:postgresql://my-db-postgresql:5432/postgres
+
+app:
+  db:
+    password:
+      _default: cG9zdGdyZXM=
+    username:
+      _default: cG9zdGdyZXM=
+
