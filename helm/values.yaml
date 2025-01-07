@@ -25,7 +25,7 @@ ingress:
   enabled: false
   name: "bot-state-helm-ingress"
   className: nginx
-  host: "arch.homework"
+  host: "arch.homework.bot.state"
   pathType: Prefix
   path: /
 
